@@ -1,0 +1,14 @@
+**/.DS_Store
+**/.apt_generated/
+**/bin/
+**/gen/
+**/build/
+**/src-gen/
+**/java-gen/
+**/.idea/
+**/.gradle/
+**/local.properties
+**/*.iml
+**/*.iws
+**/*.ipr
+**/proguard.map

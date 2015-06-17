@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.justeat.app.deeplinks" >
+
+<application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:theme="@style/AppTheme" >
+
+    <activity
+        android:name=".activities.AActivity"
+        android:label="@string/label_a" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity
+        android:name=".activities.BActivity"
+        android:label="@string/label_b" >
+    </activity>
+    <activity
+        android:name=".activities.CActivity"
+        android:label="@string/label_c" >
+    </activity>
+    <activity
+        android:name=".activities.LinkDispatcherActivity"
+        android:noHistory="true"
+        android:launchMode="singleInstance"
+        android:theme="@android:style/Theme.NoDisplay" >
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="example-scheme"/>
+            <data android:host="activitya"/>
+            <data android:host="activityb"/>
+            <data android:host="activityc"/>
+            <data android:pathPattern=".*"/>
+        </intent-filter>
+
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="http" />
+            <data android:scheme="https"/>
+            <data android:host="www.example.co.uk" />
+            <data android:host="example.co.uk" />
+            <data android:path="/a" />
+            <data android:path="/c" />
+        </intent-filter>
+    </activity>
+
+</application>
+
+</manifest>
