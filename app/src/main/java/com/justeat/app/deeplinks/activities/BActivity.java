@@ -17,6 +17,7 @@ import butterknife.OnClick;
 public class BActivity extends Activity {
 
     @InjectView(R.id.query_label) TextView mQueryText;
+    private IntentHelper mIntents = new IntentHelper();
 
     private String mQuery;
 
@@ -59,6 +60,6 @@ public class BActivity extends Activity {
             choice = 2;
         }
 
-        startActivity(IntentHelper.newCActivityIntent(this, mQuery, choice));
+        startActivity(mIntents.newCActivityIntent(this, mQuery, choice));
     }
 }

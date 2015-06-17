@@ -16,6 +16,7 @@ import butterknife.OnClick;
 public class AActivity extends Activity {
 
     @InjectView(R.id.query) EditText mQueryEditText;
+    private IntentHelper mIntents = new IntentHelper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class AActivity extends Activity {
 
     @OnClick(R.id.button_go)
     public void onClick() {
-        startActivity(IntentHelper.newBActivityIntent(this, mQueryEditText.getText().toString()));
+        startActivity(mIntents.newBActivityIntent(this, mQueryEditText.getText().toString()));
     }
 
 }

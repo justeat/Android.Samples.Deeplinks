@@ -8,9 +8,11 @@ import com.justeat.app.deeplinks.intents.IntentHelper;
 
 public class UriToIntentMapper {
     private Context mContext;
+    private IntentHelper mIntents;
 
-    public UriToIntentMapper(Context context) {
+    public UriToIntentMapper(Context context, IntentHelper intentHelper) {
         mContext = context;
+        mIntents = intentHelper;
     }
 
     public void dispatchIntent(Intent intent) {
@@ -39,14 +41,14 @@ public class UriToIntentMapper {
 
         switch (host) {
             case "activitya":
-                return IntentHelper.newAActivityIntent(mContext);
+                return mIntents.newAActivityIntent(mContext);
             case "activityb":
                 String bQuery = uri.getQueryParameter("query");
-                return IntentHelper.newBActivityIntent(mContext, bQuery);
+                return mIntents.newBActivityIntent(mContext, bQuery);
             case "activityc":
                 String cQuery = uri.getQueryParameter("query");
                 int choice = Integer.parseInt(uri.getQueryParameter("choice"));
-                return IntentHelper.newCActivityIntent(mContext, cQuery, choice);
+                return mIntents.newCActivityIntent(mContext, cQuery, choice);
         }
         return null;
     }
@@ -56,11 +58,11 @@ public class UriToIntentMapper {
 
         switch (path) {
             case "/a":
-                return IntentHelper.newAActivityIntent(mContext);
+                return mIntents.newAActivityIntent(mContext);
             case "/c":
                 String cQuery = uri.getQueryParameter("query");
                 int choice = Integer.parseInt(uri.getQueryParameter("choice"));
-                return IntentHelper.newCActivityIntent(mContext, cQuery, choice);
+                return mIntents.newCActivityIntent(mContext, cQuery, choice);
         }
         return null;
     }
