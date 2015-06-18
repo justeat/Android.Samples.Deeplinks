@@ -33,11 +33,6 @@ import static org.junit.Assert.assertThat;
 @Config(constants = BuildConfig.class, sdk = 21)
 @RunWith(RobolectricRunner.class)
 public class IntentFilterTest {
-
-    @Before
-    public void setUp() {
-    }
-
     @Test
     public void activity_a_app_link_resolves() {
         assertIntentResolves(DeepLinks.getActivityAUri());
